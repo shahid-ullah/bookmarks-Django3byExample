@@ -4,8 +4,8 @@ note
 Session.vim
 
 # temporary
- cert.key
- cert.crt
+cert.key
+cert.crt
 
 # Django #
 *.log
