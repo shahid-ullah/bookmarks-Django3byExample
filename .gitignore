@@ -3,6 +3,10 @@ note
 .vim
 Session.vim
 
+# temporary
+ cert.key
+ cert.crt
+
 # Django #
 *.log
 *.pot
