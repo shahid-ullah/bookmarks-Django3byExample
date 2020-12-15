@@ -1,4 +1,5 @@
 # images/views.py
+from common.decorators import ajax_required
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -44,6 +45,7 @@ def image_detail(request, id, slug):
             {'section': 'images',
                 'image': image})
 
+@ajax_required
 @login_required
 @require_POST
 def image_like(request):
