@@ -1,4 +1,4 @@
-
+{# account/templates/base.html #}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
           <a href="{% url "dashboard" %}">My dashboard</a>
         </li>
         <li {% if section == "images" %}class="selected"{% endif %}>
-          <a href="#">Images</a>
+            <a href="{% url "images:list" %}">Images</a>
         </li>
         <li {% if section == "people" %}class="selected"{% endif %}>
           <a href="#">People</a>
@@ -49,14 +49,18 @@
       {% block content %}
       {% endblock %}
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
     <script>
+      {# capture the cookie #}
       var csrftoken = Cookies.get('csrftoken');
+
       function csrfSafeMethod(method) {
         // these HTTP methods do not require CSRF protection
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
       }
+
       $.ajaxSetup({
         beforeSend: function(xhr, settings) {
           if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -70,5 +74,6 @@
         {% endblock %}
       });
     </script>
+
   </body>
 </html>

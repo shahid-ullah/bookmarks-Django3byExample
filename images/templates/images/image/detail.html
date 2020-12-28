@@ -78,6 +78,7 @@
 
 {% block domready %}
   $('a.like').click(function(e){
+    {# e is the event object #}
     e.preventDefault();
     $.post('{% url "images:like" %}',
       {
