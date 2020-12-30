@@ -70,35 +70,10 @@ def image_like(request):
     return JsonResponse({"status": "error"})
 
 
-# @login_required
-# def image_list(request):
-#     images = Image.objects.all()
-#     paginator = Paginator(images, 2)
-#     page = request.GET.get('page')
-#     try:
-#         images = paginator.page(page)
-#     except PageNotAnInteger:
-#         # if page is not an integer deliver the first page
-#         images = paginator.page(1)
-#     except EmptyPage:
-#         if request.is_ajax():
-#             # if request is AJAX and the page is out of range
-#             # return an empty page
-#             return HttpResponse('')
-#         # if page is out of range deliver the last page
-#         images = paginator.page(paginator.num_pages)
-
-#     if request.is_ajax():
-#         return render(request, 'images/image/list_ajax.html',
-#                 {'section': 'images', 'images': images})
-
-#     return render(request, 'images/image/list.html',
-#             {'section': 'images', 'images': images})
-
 @login_required
 def image_list(request):
     images = Image.objects.all()
-    paginator = Paginator(images, 2)
+    paginator = Paginator(images, 8)
     page = request.GET.get('page')
     # breakpoint()
     try:
